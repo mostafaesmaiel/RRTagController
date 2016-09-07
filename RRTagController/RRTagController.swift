@@ -146,7 +146,7 @@ class RRTagController: UIViewController, UICollectionViewDelegate, UICollectionV
     func cancelEditTag() {
         self.view.endEditing(true)
         UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.4,
-            initialSpringVelocity: 0.4, options: UIViewAnimationOptions.allZeros, animations: { () -> Void in
+            initialSpringVelocity: 0.4, options: UIViewAnimationOptions(), animations: { () -> Void in
             self.addTagView.frame.origin.y = 0
             self.controlPanelEdition.frame.origin.y = UIScreen.mainScreen().bounds.size.height
             self.collectionTag.alpha = 1
@@ -198,12 +198,12 @@ class RRTagController: UIViewController, UICollectionViewDelegate, UICollectionV
         else {
             addTagView.textEdit.text = nil
             UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 0.4,
-                options: UIViewAnimationOptions.allZeros, animations: { () -> Void in
+                options: UIViewAnimationOptions(), animations: { () -> Void in
                 self.collectionTag.alpha = 0.3
                 self.addTagView.frame.origin.y = 64
                 }, completion: { (anim: Bool) -> Void in
                     self.addTagView.textEdit.becomeFirstResponder()
-                    println("")
+                    print("", terminator: "")
             })
         }
     }
@@ -227,7 +227,7 @@ class RRTagController: UIViewController, UICollectionViewDelegate, UICollectionV
             if let keyboardSize = (userInfo[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
                 heightKeyboard = keyboardSize.height
                 UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 0.4,
-                    options: UIViewAnimationOptions.allZeros, animations: { () -> Void in
+                    options: UIViewAnimationOptions(), animations: { () -> Void in
                     self.controlPanelEdition.frame.origin.y = self.view.frame.size.height - self.heightKeyboard - 50
                 }, completion: nil)
             }
@@ -257,7 +257,8 @@ class RRTagController: UIViewController, UICollectionViewDelegate, UICollectionV
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: nil)
     }
     
-    class func displayTagController(#parentController: UIViewController, tagsString: [String]?,
+    
+    class func displayTagController(parentController: UIViewController, tagsString: [String]?,
         blockFinish: (selectedTags: Array<Tag>, unSelectedTags: Array<Tag>)->(), blockCancel: ()->()) {
         let tagController = RRTagController()
             tagController.tags = Array()
@@ -271,7 +272,7 @@ class RRTagController: UIViewController, UICollectionViewDelegate, UICollectionV
             parentController.presentViewController(tagController, animated: true, completion: nil)
     }
 
-    class func displayTagController(#parentController: UIViewController, tags: [Tag]?,
+    class func displayTagController(parentController: UIViewController, tags: [Tag]?,
         blockFinish: (selectedTags: Array<Tag>, unSelectedTags: Array<Tag>)->(), blockCancel: ()->()) {
             let tagController = RRTagController()
             tagController.tags = tags

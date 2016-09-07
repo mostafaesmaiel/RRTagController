@@ -165,6 +165,8 @@
 		BB8A0A671A97804600E278A0 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0730;
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "Remi Robert";
 				TargetAttributes = {
@@ -417,6 +419,7 @@
 				BB8A0A901A97804700E278A0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BB8A0A911A97804700E278A0 /* Build configuration list for PBXNativeTarget "RRTagControllerTests" */ = {
 			isa = XCConfigurationList;
@@ -425,6 +428,7 @@
 				BB8A0A931A97804700E278A0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
